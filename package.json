@@ -1,0 +1,13 @@
+{
+  "name": "easy.ui",
+  "version": "1.0.0",
+  "description": "Microservice architecture based on nuxt",
+  "main": "index.js",
+  "repository": "https://github.com/louis-xie-programmer/easy.ui.git",
+  "author": "laiys <xiezhaoyang@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "create-web-win": "cmd /c cmds\\create-web.bat",
+    "create-web": "node cmds\\create-web.js"
+  }
+}

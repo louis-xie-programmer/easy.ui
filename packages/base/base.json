@@ -1,0 +1,9 @@
+{
+  "components": [
+    "header"
+  ],
+  "layouts":{
+  },
+  "middleware":{
+  }
+}
