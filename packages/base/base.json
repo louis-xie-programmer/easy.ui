@@ -2,8 +2,9 @@
   "components": [
     "header"
   ],
-  "layouts":{
-  },
-  "middleware":{
-  }
+  "layouts":[
+  ],
+  "middlewares":[
+    "analytics.global.ts"
+  ]
 }

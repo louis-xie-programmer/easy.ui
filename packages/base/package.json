@@ -3,11 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build web",
-    "dev": "nuxt dev web",
-    "generate": "nuxt generate web",
-    "preview": "nuxt preview web",
-    "postinstall": "nuxt prepare web"
+    "add-cmp": "node cmds\\add-component.js",
+    "add-mid": "node cmds\\add-middleware.js"
   },
   "dependencies": {
     "@nuxt/eslint": "1.4.10",
