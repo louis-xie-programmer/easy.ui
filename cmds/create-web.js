@@ -36,6 +36,17 @@ for (const key in basepackage.dependencies) {
   apppackage.dependencies[key] = basepackage.dependencies[key]
 }
 
+// 站点测试端口配置，读取mapp.json, 如果已经手动配置直接使用，如果没有则自动添加4001开始叠加
+const mappconfig = JSON.parse(fs.readFileSync('mapp.json','utf8'))
+if (mappconfig.website[appname]){
+  apppackage.scripts["dev"] = 'nuxt dev --port ' + mappconfig.website[appname].port
+} else {
+  apppackage.scripts["dev"] = 'nuxt dev --port ' + mappconfig.maxport;
+  mappconfig.maxport ++;
+  mappconfig.website[appname] = { port : mappconfig.maxport }
+  fs.writeFileSync('mapp.json',JSON.stringify(mappconfig,null,4),'utf8');
+}
+
 fs.writeFileSync(apppath + 'package.json', JSON.stringify(apppackage, null, 4),'utf8')
 
 // 通用目录及文件复制
@@ -92,7 +103,6 @@ if (basejson.middlewares.length > 0 && !fs.existsSync(appcomponentpath)) {
   fs.mkdirSync(appmiddlewarepath, {recursive: true})
 }
 basejson.middlewares.forEach((middleware)=>{
-  console.log(middleware,111)
   fs.copyFile(basemiddlewarepath + middleware, appmiddlewarepath, (err)=>{
     if (err) throw err;
   })
